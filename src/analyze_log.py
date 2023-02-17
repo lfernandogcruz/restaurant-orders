@@ -30,6 +30,19 @@ def item_counter(orders, customer, item):
     return total
 
 
+def never_ordered(menu, orders, customer):
+    # returns a set with the items never ordered by a customer
+    customer_items = set()
+
+    for order in orders:
+        if order['customer'] == customer:
+            customer_items.add(order['order'])
+
+    divergent_items = menu.difference(customer_items)
+
+    return divergent_items
+
+
 def analyze_log(path_to_file):
 
     orders = []
@@ -63,4 +76,7 @@ def analyze_log(path_to_file):
     arnaldo_hamburgers = item_counter(orders, 'arnaldo', 'hamburguer')
 
     # joao nunca pediu -> {item, item, item}
+    joao_never_ordered = never_ordered(menu, orders, 'joao')
+
     # dias joao nunca foi -> {item, item}
+
