@@ -44,7 +44,17 @@ class TrackOrders:
         return divergent_items
 
     def get_days_never_visited_per_customer(self, customer):
-        pass
+        customer_days = set()
+        week_days = set()
+
+        for order in self.orders:
+            if order['customer'] == customer:
+                customer_days.add(order['day'])
+            week_days.add(order['day'])
+
+        divergent_days = week_days.difference(customer_days)
+
+        return divergent_days
 
     def get_busiest_day(self):
         pass
