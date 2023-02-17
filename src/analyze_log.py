@@ -19,6 +19,17 @@ def favourite_order(orders, customer):
     return favorite_item
 
 
+def item_counter(orders, customer, item):
+    # returns the total of a specific item ordered by a customer
+    total = 0
+
+    for order in orders:
+        if order['customer'] == customer and order['order'] == item:
+            total += 1
+
+    return total
+
+
 def analyze_log(path_to_file):
 
     orders = []
@@ -47,7 +58,9 @@ def analyze_log(path_to_file):
     
     # maria most ordered -> item
     maria_favorite = favourite_order(orders, 'maria')
-    
+
     # arnaldo x hamburguers -> total
+    arnaldo_hamburgers = item_counter(orders, 'arnaldo', 'hamburguer')
+
     # joao nunca pediu -> {item, item, item}
     # dias joao nunca foi -> {item, item}
