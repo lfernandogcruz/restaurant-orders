@@ -43,6 +43,19 @@ def never_ordered(menu, orders, customer):
     return divergent_items
 
 
+def week_days_unattended(week_days, orders, customer):
+    # returns a set with the week days that a customer never attended
+    customer_days = set()
+
+    for order in orders:
+        if order['customer'] == customer:
+            customer_days.add(order['day'])
+
+    divergent_days = week_days.difference(customer_days)
+
+    return divergent_days
+
+
 def analyze_log(path_to_file):
 
     orders = []
@@ -79,4 +92,5 @@ def analyze_log(path_to_file):
     joao_never_ordered = never_ordered(menu, orders, 'joao')
 
     # dias joao nunca foi -> {item, item}
+    joao_never_went = week_days_unattended(week_days, orders, 'joao')
 
