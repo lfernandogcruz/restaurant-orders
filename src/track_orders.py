@@ -31,7 +31,17 @@ class TrackOrders:
         return favorite_item
 
     def get_never_ordered_per_customer(self, customer):
-        pass
+        ordered_items = set()
+        customer_orders = set()
+
+        for order in self.orders:
+            if order['customer'] == customer:
+                customer_orders.add(order['order'])
+            ordered_items.add(order['order'])
+
+        divergent_items = ordered_items.difference(customer_orders)
+
+        return divergent_items
 
     def get_days_never_visited_per_customer(self, customer):
         pass
