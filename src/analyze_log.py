@@ -81,7 +81,7 @@ def analyze_log(path_to_file):
         # if path to file isn't valid, returns an error with the message:
         # "Arquivo inexistente: '{nome_do_arquivo}'"
         raise FileNotFoundError(f'Arquivo inexistente: {path_to_file}')
-    
+
     # maria most ordered -> item
     maria_favorite = favourite_order(orders, 'maria')
 
@@ -94,3 +94,10 @@ def analyze_log(path_to_file):
     # dias joao nunca foi -> {item, item}
     joao_never_went = week_days_unattended(week_days, orders, 'joao')
 
+    with open('data/mkt_campaign.txt', 'w') as file:
+        file.write(
+            f'{maria_favorite}\n'
+            f'{arnaldo_hamburgers}\n'
+            f'{joao_never_ordered}\n'
+            f'{joao_never_went}\n'
+        )
