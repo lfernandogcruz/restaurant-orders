@@ -57,7 +57,31 @@ class TrackOrders:
         return divergent_days
 
     def get_busiest_day(self):
-        pass
+        counter = {}
+        busiest_day = self.orders[0]['day']
+
+        for order in self.orders:
+            if order['day'] in counter:
+                counter[order['day']] += 1
+            else:
+                counter[order['day']] = 1
+
+            if counter[order['day']] > counter[busiest_day]:
+                busiest_day = order['day']
+
+        return busiest_day
 
     def get_least_busy_day(self):
-        pass
+        counter = {}
+        least_busy_day = self.orders[0]['day']
+
+        for order in self.orders:
+            if order['day'] in counter:
+                counter[order['day']] += 1
+            else:
+                counter[order['day']] = 1
+
+            if counter[order['day']] < counter[least_busy_day]:
+                least_busy_day = order['day']
+
+        return least_busy_day
