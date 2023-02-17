@@ -31,8 +31,3 @@ def analyze_log(path_to_file):
         # "Arquivo inexistente: '{nome_do_arquivo}'"
         raise FileNotFoundError(f'Arquivo inexistente: {path_to_file}')
     
-    
-
-    
-
-    print('under construction')
