@@ -30,4 +30,3 @@ def analyze_log(path_to_file):
         # if path to file isn't valid, returns an error with the message:
         # "Arquivo inexistente: '{nome_do_arquivo}'"
         raise FileNotFoundError(f'Arquivo inexistente: {path_to_file}')
-    
