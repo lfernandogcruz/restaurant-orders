@@ -15,7 +15,20 @@ class TrackOrders:
         })
 
     def get_most_ordered_dish_per_customer(self, customer):
-        pass
+        counter = {}
+        favorite_item = self.orders[0]['order']
+
+        for order in self.orders:
+            if order['customer'] == customer:
+                if order['order'] in counter:
+                    counter[order['order']] += 1
+                else:
+                    counter[order['order']] = 1
+
+                if counter[order['order']] > counter[favorite_item]:
+                    favorite_item = order['order']
+
+        return favorite_item
 
     def get_never_ordered_per_customer(self, customer):
         pass
